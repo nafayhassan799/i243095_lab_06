@@ -102,7 +102,7 @@ def a_star(start, goal):
     return None, math.inf, expanded
 
 
-def draw_graph(path, algorithm, cost):
+def draw_graph(path, algorithm, cost, goal):
     graph = nx.DiGraph()
     for node in LOCATIONS:
         graph.add_node(node)
@@ -112,7 +112,11 @@ def draw_graph(path, algorithm, cost):
 
     fig, ax = plt.subplots(figsize=(11, 6.5))
     nx.draw_networkx_nodes(graph, LOCATIONS, node_color="#9ecae1", node_size=2200, ax=ax)
-    nx.draw_networkx_labels(graph, LOCATIONS, font_size=9, ax=ax)
+    node_labels = {
+        node: f"{node}\nh={heuristic(node, goal):.2f}"
+        for node in graph.nodes
+    }
+    nx.draw_networkx_labels(graph, LOCATIONS, labels=node_labels, font_size=8, ax=ax)
     nx.draw_networkx_edges(
         graph, LOCATIONS, edge_color="#777777", width=1.8,
         arrows=True, arrowsize=20, ax=ax
@@ -129,7 +133,10 @@ def draw_graph(path, algorithm, cost):
         graph, LOCATIONS, edgelist=path_edges, edge_color="#d62728",
         width=4, arrows=True, arrowsize=24, ax=ax
     )
-    ax.set_title(f"{algorithm} Solution Path - Total Cost: {cost:.2f}")
+    ax.set_title(
+        f"{algorithm} Solution Path - Total Cost: {cost:.2f}\n"
+        "Node labels: heuristic h(n) | Edge labels: movement cost"
+    )
     ax.axis("off")
     fig.tight_layout()
     return fig
@@ -165,4 +172,9 @@ if st.button("Run Search", type="primary"):
         metric_b.metric("Total Path Cost", f"{cost:.2f}")
         st.write(f"**Solution Path:** {' → '.join(path)}")
         st.write(f"**Expansion Order:** {' → '.join(expanded)}")
-        st.pyplot(draw_graph(path, algorithm, cost))
+        st.pyplot(draw_graph(path, algorithm, cost, goal))
+        st.caption(
+            "Each node shows its Euclidean heuristic h(n) to the selected goal. "
+            "Numbers on edges are movement costs. GBFS ranks nodes using h(n), "
+            "while A* ranks them using g(n) + h(n)."
+        )
