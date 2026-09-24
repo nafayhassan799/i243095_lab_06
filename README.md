@@ -4,11 +4,11 @@
 
 This repository contains the completed submission for AI Lab 06. It implements and compares heuristic search techniques on weighted graphs and includes an interactive Streamlit visualization.
 
-**GitHub repository:** https://github.com/nafayhassan799/i243095_AI_LAB_06
+**GitHub repository:** https://github.com/nafayhassan799/i243095_lab_06
 
 ### Submission files
 
-- `i243095_AI_LAB_06.ipynb` - completed and executed Jupyter notebook
+- `i243095_lab_06.ipynb` - completed and executed Jupyter notebook
 - `streamlit_app.py` - interactive GBFS and A* Streamlit application
 - `requirements.txt` - Python dependencies required by the notebook and app
 
@@ -44,7 +44,7 @@ Then open the local address displayed by Streamlit, normally `http://localhost:8
 
 Use the following settings when deploying this repository:
 
-- Repository: `i243095_AI_LAB_06`
+- Repository: `i243095_lab_06`
 - Branch: `main`
 - Main file path: `streamlit_app.py`
 
