@@ -12,15 +12,13 @@ This repository contains the completed submission for AI Lab 06. It implements a
 - `streamlit_app.py` - interactive GBFS and A* Streamlit application
 - `requirements.txt` - Python dependencies required by the notebook and app
 
-### Completed tasks
+### Completed graded tasks
 
 1. Euclidean heuristic design for a warehouse robot
 2. Greedy Best-First Search for airport baggage handling
 3. A* search for a hospital emergency-supply robot
 4. Weighted A* for an autonomous delivery drone
 5. GBFS and A* search with multiple charging-station goals
-6. 8-puzzle heuristic evaluation (ungraded practice)
-7. GBFS on a weighted grid (ungraded practice)
 
 Every graph visualization highlights the returned solution path. The notebook includes its executed outputs as required by the lab instructions.
 
